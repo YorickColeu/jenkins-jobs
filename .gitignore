@@ -1,0 +1,6 @@
+# Ignore everything but config.xml files
+*
+!.gitignore
+!config.xml
+!*/
+

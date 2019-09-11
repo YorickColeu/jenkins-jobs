@@ -33,6 +33,25 @@
       <command>cd dummyC_Project/tests &amp;&amp; bats --tap dummyC_Project/tests/test.bats &gt; ../../build.tap</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers/>
+  <publishers>
+    <org.tap4j.plugin.TapPublisher plugin="tap@2.3">
+      <testResults>build.tap</testResults>
+      <failIfNoResults>true</failIfNoResults>
+      <failedTestsMarkBuildAsFailure>false</failedTestsMarkBuildAsFailure>
+      <outputTapToConsole>true</outputTapToConsole>
+      <enableSubtests>false</enableSubtests>
+      <discardOldReports>false</discardOldReports>
+      <todoIsFailure>false</todoIsFailure>
+      <includeCommentDiagnostics>false</includeCommentDiagnostics>
+      <validateNumberOfTests>false</validateNumberOfTests>
+      <planRequired>true</planRequired>
+      <verbose>true</verbose>
+      <showOnlyFailures>false</showOnlyFailures>
+      <stripSingleParents>false</stripSingleParents>
+      <flattenTapResult>false</flattenTapResult>
+      <removeYamlIfCorrupted>false</removeYamlIfCorrupted>
+      <skipIfBuildNotOk>false</skipIfBuildNotOk>
+    </org.tap4j.plugin.TapPublisher>
+  </publishers>
   <buildWrappers/>
 </project>

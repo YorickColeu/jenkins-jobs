@@ -1,0 +1,38 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.jira.JiraProjectProperty plugin="jira@3.0.9"/>
+  </properties>
+  <scm class="hudson.plugins.repo.RepoScm" plugin="repo@1.10.7">
+    <manifestRepositoryUrl>https://github.com/YorickColeu/manifest</manifestRepositoryUrl>
+    <jobs>0</jobs>
+    <depth>0</depth>
+    <currentBranch>true</currentBranch>
+    <resetFirst>false</resetFirst>
+    <quiet>true</quiet>
+    <forceSync>false</forceSync>
+    <trace>false</trace>
+    <showAllChanges>false</showAllChanges>
+    <noTags>false</noTags>
+    <ignoreProjects class="linked-hash-set">
+      <string></string>
+    </ignoreProjects>
+  </scm>
+  <assignedNode>jenkins_builder</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>cd dummyC_Project/tests &amp;&amp; bats --tap dummyC_Project/tests/test.bats &gt; ../../build.tap</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

@@ -30,12 +30,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>cd dummyC_Project/tests &amp;&amp; bats --tap dummyC_Project/tests/test.bats &gt; ../../build.tap</command>
+      <command>cd dummyC_Project/tests &amp;&amp; bats --tap dummyC_Project/tests/test.bats &gt; ../../${JOB_BASE_NAME}.tap</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <org.tap4j.plugin.TapPublisher plugin="tap@2.3">
-      <testResults>build.tap</testResults>
+      <testResults>${JOB_BASE_NAME}.tap</testResults>
       <failIfNoResults>true</failIfNoResults>
       <failedTestsMarkBuildAsFailure>false</failedTestsMarkBuildAsFailure>
       <outputTapToConsole>true</outputTapToConsole>
@@ -52,6 +52,14 @@
       <removeYamlIfCorrupted>false</removeYamlIfCorrupted>
       <skipIfBuildNotOk>false</skipIfBuildNotOk>
     </org.tap4j.plugin.TapPublisher>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>${JOB_BASE_NAME}.tap</artifacts>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <fingerprint>false</fingerprint>
+      <defaultExcludes>true</defaultExcludes>
+      <caseSensitive>true</caseSensitive>
+    </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers/>
 </project>
